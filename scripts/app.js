@@ -20,6 +20,11 @@ const deck = [
 ];
 
 const drawNewCards = document.querySelector("button");
+const player = {
+  currentHealth: 21,
+  maxHealth: 21,
+  currentDefense: 0
+}
 
 // Implement the Fisher-Yates Shuffle Algorithm link: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 const shuffle = array => {
@@ -51,6 +56,10 @@ drawNewCards.addEventListener("click", function(event) {
   clearBoard();
   dealCards();
 });
+
+board.addEventListener("click", event => {
+  console.log(event.target);
+})
 
 shuffle(deck);
 dealCards();
