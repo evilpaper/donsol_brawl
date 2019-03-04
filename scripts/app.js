@@ -19,7 +19,7 @@ const deck = [
   { pattern: "pike", value: 1 }
 ];
 
-const drawNewCards = document.querySelector("button");
+const drawNewCards = document.querySelector(".d-new-cards");
 const player = {
   currentHealth: 21,
   maxHealth: 21,
@@ -36,6 +36,9 @@ const getNextCard = (deck) => {
 }
 
 const dealCards = () => {
+  // get the number of empty slots on the board
+  // get the same amount of cards
+  if (deck.length < 1) return;
   for (let count = 0; count < 4; count++) {
     const nextCard = getNextCard(deck)
     const card = document.createElement("p");
