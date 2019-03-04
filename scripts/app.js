@@ -35,11 +35,19 @@ const getNextCard = (deck) => {
   return deck.shift();
 }
 
+const getNumberOfCardsToDeal = () => {
+  const cards = Array.from(board.querySelectorAll("p"));
+  console.log(cards.length)
+  return 4 - cards.length;
+}
+
 const dealCards = () => {
   // get the number of empty slots on the board
   // get the same amount of cards
   if (deck.length < 1) return;
-  for (let count = 0; count < 4; count++) {
+  const numberOfCards = getNumberOfCardsToDeal();
+  console.log(numberOfCards)
+  for (let count = 0; count <= numberOfCards-1; count++) {
     const nextCard = getNextCard(deck)
     const card = document.createElement("p");
     card.innerHTML = `${nextCard.pattern} ${nextCard.value}`;
@@ -48,7 +56,7 @@ const dealCards = () => {
 };
 
 const clearBoard = () => {
-  cards = Array.from(board.querySelectorAll("p"));
+  const cards = Array.from(board.querySelectorAll("p"));
   cards.forEach(card => {
     var elem = board.querySelector("p");
     elem.parentNode.removeChild(elem);
