@@ -1,4 +1,4 @@
-const board = document.querySelector("section");
+
 const deck = [
   { pattern: "heart", value: 1 },
   { pattern: "heart", value: 2 },
@@ -19,12 +19,17 @@ const deck = [
   { pattern: "pike", value: 1 }
 ];
 
-const drawNewCards = document.querySelector(".d-new-cards");
 const player = {
   currentHealth: 21,
   maxHealth: 21,
   currentDefense: 0
 }
+
+const board = document.querySelector("section");
+const drawNewCards = document.querySelector(".d-new-cards");
+const vitalityElement = document.querySelector(".d-vitality");
+
+vitalityElement.innerHTML = "33"
 
 // Implement the Fisher-Yates Shuffle Algorithm link: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 const shuffle = array => {
