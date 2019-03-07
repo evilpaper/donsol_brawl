@@ -59,6 +59,7 @@ const dealCards = () => {
     const nextCard = getNextCard(deck)
     const card = document.createElement("p");
     card.innerHTML = `${nextCard.pattern} ${nextCard.value}`;
+    card.setAttribute('value', nextCard.value)
     board.appendChild(card);
   }
 };
@@ -78,6 +79,7 @@ drawNewCards.addEventListener("click", function(event) {
 
 board.addEventListener("click", event => {
   console.log(event.target);
+
 })
 
 shuffle(deck);
