@@ -1,24 +1,4 @@
 
-const deck = [
-  { pattern: "heart", value: 1 },
-  { pattern: "heart", value: 2 },
-  { pattern: "heart", value: 3 },
-  { pattern: "heart", value: 4 },
-  { pattern: "heart", value: 5 },
-  { pattern: "heart", value: 6 },
-  { pattern: "heart", value: 7 },
-  { pattern: "heart", value: 8 },
-  { pattern: "heart", value: 9 },
-  { pattern: "heart", value: 10 },
-  { pattern: "heart", value: 11 },
-  { pattern: "heart", value: 12 },
-  { pattern: "heart", value: 13 },
-  { pattern: "heart", value: 14 },
-  { pattern: "tile", value: 1 },
-  { pattern: "clover", value: 1 },
-  { pattern: "pike", value: 1 }
-];
-
 const player = {
   currentHealth: 21,
   maxHealth: 21,
@@ -26,7 +6,7 @@ const player = {
 }
 
 const board = document.querySelector("section");
-const drawNewCards = document.querySelector(".d-new-cards");
+const run = document.querySelector(".d-new-cards");
 const vitalityElement = document.querySelector(".d-vitality");
 const guardElement = document.querySelector(".d-guard")
 
@@ -50,8 +30,6 @@ const getNumberOfCardsToDeal = () => {
 }
 
 const dealCards = () => {
-  // get the number of empty slots on the board
-  // get the same amount of cards
   if (deck.length < 1) return;
   const numberOfCards = getNumberOfCardsToDeal();
   console.log(numberOfCards)
@@ -72,14 +50,15 @@ const clearBoard = () => {
   })
 }
 
-drawNewCards.addEventListener("click", function(event) {
+run.addEventListener("click", function(event) {
   clearBoard();
   dealCards();
 });
 
 board.addEventListener("click", event => {
   console.log(event.target);
-
+  const card = event.target;
+  card.parentNode.removeChild(card)
 })
 
 shuffle(deck);
