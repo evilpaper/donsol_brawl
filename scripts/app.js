@@ -4,7 +4,6 @@ const player = {
   maxHealth: 21,
   currentDefense: 0
 }
-
 const board = document.querySelector("section");
 const run = document.querySelector(".d-new-cards");
 const vitalityElement = document.querySelector(".d-vitality");
@@ -25,14 +24,12 @@ const getNextCard = (deck) => {
 
 const getNumberOfCardsToDeal = () => {
   const cards = Array.from(board.querySelectorAll("p"));
-  console.log(cards.length)
   return 4 - cards.length;
 }
 
 const dealCards = () => {
   if (deck.length < 1) return;
   const numberOfCards = getNumberOfCardsToDeal();
-  console.log(numberOfCards)
   for (let count = 0; count <= numberOfCards-1; count++) {
     const nextCard = getNextCard(deck)
     const card = document.createElement("p");
@@ -56,9 +53,12 @@ run.addEventListener("click", function(event) {
 });
 
 board.addEventListener("click", event => {
-  console.log(event.target);
   const card = event.target;
   card.parentNode.removeChild(card)
+  const cards = Array.from(board.querySelectorAll("p"));
+  if (cards.length < 1) {
+    dealCards();
+  }
 })
 
 shuffle(deck);
