@@ -55,8 +55,16 @@ run.addEventListener("click", function(event) {
 
 board.addEventListener("click", event => {
   const card = event.target;
+  const pattern = card.getAttribute("pattern")
+  const value = card.getAttribute("value")
+  console.log(pattern)
+  if (pattern === "Clover") {
+    player.currentHealth = player.currentHealth - value
+    vitalityElement.innerHTML = player.currentHealth.toString()
+  }
   card.parentNode.removeChild(card)
-  console.log(card)
+
+  // Check if board is empty
   const cards = Array.from(board.querySelectorAll("p"));
   if (cards.length < 1) {
     dealCards();
