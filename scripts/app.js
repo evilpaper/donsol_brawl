@@ -58,7 +58,7 @@ board.addEventListener("click", event => {
   const pattern = card.getAttribute("pattern")
   const value = card.getAttribute("value")
   console.log(pattern)
-  if (pattern === "Clover") {
+  if (pattern === "Clover" || pattern === "Pike") {
     player.currentHealth = player.currentHealth - value
     vitalityElement.innerHTML = player.currentHealth.toString()
   }
