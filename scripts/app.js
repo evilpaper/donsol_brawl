@@ -1,16 +1,16 @@
 
 const player = {
-  currentHealth: 21,
-  maxHealth: 21,
+  vitality: 21,
+  maximumVitality: 21,
   currentGuard: 0,
-  maxGuard: 11
+  maximumGuard: 11
 }
 const board = document.querySelector("section");
 const run = document.querySelector(".d-new-cards");
 const vitalityElement = document.querySelector(".d-vitality");
 const guardElement = document.querySelector(".d-guard")
 
-vitalityElement.innerHTML = player.currentHealth.toString()
+vitalityElement.innerHTML = player.vitality.toString()
 guardElement.innerHTML = player.currentGuard.toString()
 
 // Implement the Fisher-Yates Shuffle Algorithm link: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -48,6 +48,13 @@ const clearBoard = () => {
   })
 }
 
+const updatePlayer = (pattern, value) => {
+  if (pattern === "Clover" || pattern === "Pike") {
+    return player.vitality = player.vitality - value
+  }
+  return player.vitality
+}
+
 run.addEventListener("click", function(event) {
   clearBoard();
   dealCards();
@@ -57,11 +64,11 @@ board.addEventListener("click", event => {
   const card = event.target;
   const pattern = card.getAttribute("pattern")
   const value = card.getAttribute("value")
-  console.log(pattern)
-  if (pattern === "Clover" || pattern === "Pike") {
-    player.currentHealth = player.currentHealth - value
-    vitalityElement.innerHTML = player.currentHealth.toString()
-  }
+
+  player.vitality = updatePlayer(pattern, value)
+
+  vitalityElement.innerHTML = player.vitality.toString()
+
   card.parentNode.removeChild(card)
 
   // Check if board is empty
