@@ -52,7 +52,17 @@ const updatePlayer = (pattern, value) => {
   if (pattern === "Clover" || pattern === "Pike") {
     return player.vitality = player.vitality - value
   }
+  if (pattern === "Heart") {
+    return player.vitality = player.vitality + value
+  }
   return player.vitality
+}
+
+// Maybe this could be a cleaner solution, have to think.
+const updatePlayerProperties = {
+  clover: function(value1, value2) {
+    return value1 + value2
+  }
 }
 
 run.addEventListener("click", function(event) {
@@ -63,10 +73,12 @@ run.addEventListener("click", function(event) {
 board.addEventListener("click", event => {
   const card = event.target;
   const pattern = card.getAttribute("pattern")
-  const value = card.getAttribute("value")
+  const value = parseInt(card.getAttribute("value"));
 
+  // Update player stats
   player.vitality = updatePlayer(pattern, value)
 
+  // Update DOM
   vitalityElement.innerHTML = player.vitality.toString()
 
   card.parentNode.removeChild(card)
