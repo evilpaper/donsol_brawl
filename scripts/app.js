@@ -2,7 +2,7 @@
 const player = {
   vitality: 21,
   maximumVitality: 21,
-  currentGuard: 0,
+  guard: 0,
   maximumGuard: 11
 }
 const board = document.querySelector("section");
@@ -11,7 +11,7 @@ const vitalityElement = document.querySelector(".d-vitality");
 const guardElement = document.querySelector(".d-guard")
 
 vitalityElement.innerHTML = player.vitality.toString()
-guardElement.innerHTML = player.currentGuard.toString()
+guardElement.innerHTML = player.guard.toString()
 
 // Implement the Fisher-Yates Shuffle Algorithm link: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 const shuffle = array => {
@@ -48,7 +48,7 @@ const clearBoard = () => {
   })
 }
 
-const updatePlayer = (pattern, value) => {
+const updatePlayerVitality = (pattern, value) => {
   if (pattern === "Clover" || pattern === "Pike") {
     return player.vitality = player.vitality - value
   }
@@ -58,8 +58,12 @@ const updatePlayer = (pattern, value) => {
   return player.vitality
 }
 
-// Maybe this could be a cleaner solution, have to think.
-const updatePlayerProperties = {
+const updatePlayerGuard = (value) => {
+  return player.guard + value
+}
+
+// Maybe this could be a cleaner solution, have to think...
+const updatePlayerVitalityProperties = {
   clover: function(value1, value2) {
     return value1 + value2
   }
@@ -76,10 +80,14 @@ board.addEventListener("click", event => {
   const value = parseInt(card.getAttribute("value"));
 
   // Update player stats
-  player.vitality = updatePlayer(pattern, value)
+  player.vitality = updatePlayerVitality(pattern, value)
+  if (pattern === "Tile") {
+    player.guard = updatePlayerGuard(value)
+  }
 
   // Update DOM
   vitalityElement.innerHTML = player.vitality.toString()
+  guardElement.innerHTML = player.guard.toString()
 
   card.parentNode.removeChild(card)
 
