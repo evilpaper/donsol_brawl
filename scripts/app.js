@@ -192,9 +192,16 @@ board.addEventListener("click", event => {
   strengthOfLastOpponentElement.innerHTML = player.strengthOfLastOpponent.toString();
   card.parentNode.removeChild(card);
 
-  // Check if board is empty
+  // Get the number of cards left on the board
   const cards = Array.from(board.querySelectorAll("p"));
-  if (cards.length === 0) {
+
+  if (player.vitality === 0) {
+    clearBoard();
+    const gameOverMessage = document.createElement("p");
+    gameOverMessage.innerHTML = "K-O - You lost!";
+    board.appendChild(gameOverMessage);
+  } else if (cards.length === 0) {
+    // Check if board is empty
     dealCards();
   }
   console.log(discard);
