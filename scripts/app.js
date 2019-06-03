@@ -1,8 +1,7 @@
 /*
 
 TODO
-- Implement death/game over
-- Implement rounds
+- Implement restart
 - Implement score
 - Put cards left on the board in the bottom of the pile
 
@@ -77,9 +76,10 @@ const board = document.querySelector("section");
 const run = document.querySelector(".d-new-cards");
 const vitalityElement = document.querySelector(".d-vitality");
 const attackElement = document.querySelector(".d-attack");
+const roundElement = document.querySelector(".d-round");
 const strengthOfLastOpponentElement = document.querySelector(".d-attack-break");
 const discard = [];
-const round = 0;
+let round = 0;
 
 vitalityElement.innerHTML = player.vitality.toString();
 attackElement.innerHTML = player.attack.toString();
@@ -100,6 +100,7 @@ const getNumberOfCardsToDeal = () => {
 };
 
 const dealCards = () => {
+  round++;
   if (deck.length < 1) return;
   // count up round
   const numberOfCards = getNumberOfCardsToDeal();
@@ -110,6 +111,7 @@ const dealCards = () => {
     cardElement.setAttribute("suite", card.suite);
     cardElement.setAttribute("value", card.value);
     board.appendChild(cardElement);
+    roundElement.innerHTML = round.toString();
   }
 };
 
