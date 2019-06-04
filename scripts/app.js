@@ -4,6 +4,7 @@ TODO
 - Implement restart
 - Implement score
 - Put cards left on the board in the bottom of the pile
+- Fix bug that give error if first card is a heart
 
 Thought on organisation...
 
@@ -70,13 +71,15 @@ const player = {
 };
 const game = {
   round: 0,
-  turn: 0
+  turn: 0,
+  cardCount: 0
 };
 const board = document.querySelector("section");
 const run = document.querySelector(".d-new-cards");
 const vitalityElement = document.querySelector(".d-vitality");
 const attackElement = document.querySelector(".d-attack");
 const roundElement = document.querySelector(".d-round");
+const cardsCountElement = document.querySelector(".d-card-count");
 const strengthOfLastOpponentElement = document.querySelector(".d-attack-break");
 const discard = [];
 let round = 0;
@@ -84,6 +87,7 @@ let round = 0;
 vitalityElement.innerHTML = player.vitality.toString();
 attackElement.innerHTML = player.attack.toString();
 strengthOfLastOpponentElement.innerHTML = player.strengthOfLastOpponent.toString();
+cardsCountElement.innerHTML = game.cardCount;
 
 // Implement the Fisher-Yates Shuffle Algorithm link: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 const shuffle = array => {
@@ -183,6 +187,7 @@ board.addEventListener("click", event => {
   const suite = card.getAttribute("suite");
   const value = parseInt(card.getAttribute("value"));
 
+  game.cardCount++;
   player.attack = updatePlayerAttack(suite, value, player);
   player.vitality = updatePlayerVitality(suite, value, player);
 
@@ -192,6 +197,7 @@ board.addEventListener("click", event => {
   attackElement.innerHTML = player.attack.toString();
   vitalityElement.innerHTML = player.vitality.toString();
   strengthOfLastOpponentElement.innerHTML = player.strengthOfLastOpponent.toString();
+  cardsCountElement.innerHTML = game.cardCount.toString();
   card.parentNode.removeChild(card);
 
   // Get the number of cards left on the board
