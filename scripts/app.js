@@ -2,65 +2,9 @@
 
 TODO
 - Implement restart
-- Implement score
 - Put cards left on the board in the bottom of the pile
 - Fix bug that give error if first card is a heart
-
-Thought on organisation...
-
-What state do we have?
-
-The game itself has:
-- rounds
-- turns (how many cards that has been flipped)
-- end
-
-The player has
-- vitality
-- attack
-- experience (how many rounds it has completed)
-
-const GameOperations = {
-  equip_healer: function() {
-
-  },
-  equip_brawler: function() {
-
-  },
-  fight: function() {
-
-  },
-  move_on: function() {
-
-  }
-}
-
-class GameState {
-  constructor(round, turn, vitality, attack) {
-    this.round = round;
-    this.turn = turn;
-    this.vitality = vitality;
-    this.attack = attack;
-  }
-  equipHealer() {
-
-  }
-  equipBrawler() {
-
-  }
-  fight() {
-
-  }
-  moveOn() {
-
-  }
-}
-
-function updateGameState() {
-
-}
-
-*/
+ */
 
 const player = {
   vitality: 21,
@@ -82,7 +26,6 @@ const roundElement = document.querySelector(".d-round");
 const cardsCountElement = document.querySelector(".d-card-count");
 const strengthOfLastOpponentElement = document.querySelector(".d-attack-break");
 const discard = [];
-let round = 0;
 
 vitalityElement.innerHTML = player.vitality.toString();
 attackElement.innerHTML = player.attack.toString();
@@ -104,9 +47,10 @@ const getNumberOfCardsToDeal = () => {
 };
 
 const dealCards = () => {
-  round++;
   if (deck.length < 1) return;
-  // count up round
+
+  game.round++;
+
   const numberOfCards = getNumberOfCardsToDeal();
   for (let count = 0; count <= numberOfCards - 1; count++) {
     const card = getNextCard(deck);
@@ -115,7 +59,7 @@ const dealCards = () => {
     cardElement.setAttribute("suite", card.suite);
     cardElement.setAttribute("value", card.value);
     board.appendChild(cardElement);
-    roundElement.innerHTML = round.toString();
+    roundElement.innerHTML = game.round.toString();
   }
 };
 
@@ -172,6 +116,14 @@ const updatePlayerVitality = (suite, value) => {
   return player.vitality;
 };
 
+function updateVisualState(card, game, player) {
+  attackElement.innerHTML = player.attack.toString();
+  vitalityElement.innerHTML = player.vitality.toString();
+  strengthOfLastOpponentElement.innerHTML = player.strengthOfLastOpponent.toString();
+  cardsCountElement.innerHTML = game.cardCount.toString();
+  card.parentNode.removeChild(card);
+}
+
 run.addEventListener("click", function(event) {
   const cards = Array.from(board.querySelectorAll("p"));
   if (cards.length === 4 || cards.length === 1) {
@@ -194,11 +146,7 @@ board.addEventListener("click", event => {
   discard.unshift({ suite: suite, value: value });
 
   // Update DOM, visual state
-  attackElement.innerHTML = player.attack.toString();
-  vitalityElement.innerHTML = player.vitality.toString();
-  strengthOfLastOpponentElement.innerHTML = player.strengthOfLastOpponent.toString();
-  cardsCountElement.innerHTML = game.cardCount.toString();
-  card.parentNode.removeChild(card);
+  updateVisualState(card, game, player);
 
   // Get the number of cards left on the board
   const cards = Array.from(board.querySelectorAll("p"));
