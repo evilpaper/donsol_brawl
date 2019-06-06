@@ -25,6 +25,7 @@ const attackElement = document.querySelector(".d-attack");
 const roundElement = document.querySelector(".d-round");
 const cardsCountElement = document.querySelector(".d-card-count");
 const strengthOfLastOpponentElement = document.querySelector(".d-attack-break");
+const cardsInDeckElement = document.querySelector(".d-cards-in-deck");
 const discard = [];
 
 vitalityElement.innerHTML = player.vitality.toString();
@@ -61,6 +62,7 @@ const dealCards = () => {
     board.appendChild(cardElement);
     roundElement.innerHTML = game.round.toString();
   }
+  console.log("Cards left in deck is = " + deck.length);
 };
 
 const clearBoard = () => {
@@ -127,6 +129,12 @@ function updateVisualState(card, game, player) {
 run.addEventListener("click", function(event) {
   const cards = Array.from(board.querySelectorAll("p"));
   if (cards.length === 4 || cards.length === 1) {
+    cards.forEach(card => {
+      const suite = card.getAttribute("suite");
+      const value = parseInt(card.getAttribute("value"));
+      deck.push({ suite: suite, value: value });
+      console.log(card);
+    });
     clearBoard();
     dealCards();
   } else {
@@ -145,7 +153,6 @@ board.addEventListener("click", event => {
 
   discard.unshift({ suite: suite, value: value });
 
-  // Update DOM, visual state
   updateVisualState(card, game, player);
 
   // Get the number of cards left on the board
@@ -160,7 +167,6 @@ board.addEventListener("click", event => {
     // Check if board is empty
     dealCards();
   }
-  console.log(discard);
 });
 
 shuffle(deck);
