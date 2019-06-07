@@ -2,7 +2,6 @@
 
 TODO
 - Implement restart
-- Put cards left on the board in the bottom of the pile
 - Fix bug that give error if first card is a heart
  */
 
@@ -108,6 +107,7 @@ const updatePlayerVitality = (suite, value) => {
     return (player.vitality = player.vitality - damage);
   }
   if (suite === "Heart") {
+    if (discard.length === 0) return player.vitality;
     if (discard[0].suite === "Heart") {
       return player.vitality;
     } else {
@@ -118,13 +118,13 @@ const updatePlayerVitality = (suite, value) => {
   return player.vitality;
 };
 
-function updateVisualState(card, game, player) {
+const updateVisualState = (card, game, player) => {
   attackElement.innerHTML = player.attack.toString();
   vitalityElement.innerHTML = player.vitality.toString();
   strengthOfLastOpponentElement.innerHTML = player.strengthOfLastOpponent.toString();
   cardsCountElement.innerHTML = game.cardCount.toString();
   card.parentNode.removeChild(card);
-}
+};
 
 run.addEventListener("click", function(event) {
   const cards = Array.from(board.querySelectorAll("p"));
