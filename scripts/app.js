@@ -1,57 +1,57 @@
 /*
 
 TODO
-- Implement restart
- */
+- Implement restart - hundredrabbits donsol do this by switching "run" to "restart"
+- Write some tests, for practice
+- Position element correctly on screen
+- Make it responsive
+- Add styles
+- Add effects
+- Add sound
+*/
 
-const player = {
+const game = {
   vitality: 21,
   maximumVitality: 21,
   attack: 0,
+  attackHistory: [],
   strengthOfLastOpponent: 0,
-  score: 0
-};
-const game = {
   round: 0,
   turn: 0,
-  cardCount: 0
+  discard: []
 };
+
 const board = document.querySelector("section");
 const run = document.querySelector(".d-new-cards");
+
 const vitalityElement = document.querySelector(".d-vitality");
 const attackElement = document.querySelector(".d-attack");
 const roundElement = document.querySelector(".d-round");
 const cardsCountElement = document.querySelector(".d-card-count");
 const strengthOfLastOpponentElement = document.querySelector(".d-attack-break");
-const cardsInDeckElement = document.querySelector(".d-cards-in-deck");
+
 const discard = [];
 
-vitalityElement.innerHTML = player.vitality.toString();
-attackElement.innerHTML = player.attack.toString();
-strengthOfLastOpponentElement.innerHTML = player.strengthOfLastOpponent.toString();
-cardsCountElement.innerHTML = game.cardCount;
+vitalityElement.innerHTML = game.vitality.toString();
+attackElement.innerHTML = game.attack.toString();
+strengthOfLastOpponentElement.innerHTML = game.strengthOfLastOpponent.toString();
+cardsCountElement.innerHTML = game.turn;
 
-// Implement the Fisher-Yates Shuffle Algorithm link: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 const shuffle = array => {
   let currentIndex = array.length;
   let temporaryValue;
   let randomIndex;
 
-  // While there remain elements to shuffle...
   while (0 !== currentIndex) {
-    // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
 
-    // And swap it with the current element.
     temporaryValue = array[currentIndex];
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
 
   return array;
-  //  Old stuff
-  //  return array.sort(() => 0.5 - Math.random());
 };
 
 const getNextCard = deck => {
@@ -63,7 +63,7 @@ const getNumberOfCardsToDeal = () => {
   return 4 - cards.length;
 };
 
-const dealCards = () => {
+const dealCards = _ => {
   if (deck.length < 1) return;
 
   game.round++;
@@ -80,7 +80,7 @@ const dealCards = () => {
   }
 };
 
-const clearBoard = () => {
+const clearBoard = _ => {
   const cards = Array.from(board.querySelectorAll("p"));
   cards.forEach(card => {
     var elem = board.querySelector("p");
@@ -88,57 +88,62 @@ const clearBoard = () => {
   });
 };
 
-const updatePlayerAttack = (suite, value, player) => {
+const updateAttack = (suite, value, game) => {
   if (suite === "Heart") {
-    return player.attack;
+    return game.attack;
   }
 
   if (suite === "Diamond") {
-    player.strengthOfLastOpponent = 0;
+    game.attackHistory = [];
+    game.strengthOfLastOpponent = 0;
     return value;
   }
 
   if (suite === "Clubs" || suite === "Spades") {
-    if (player.attack === 0) {
-      player.strengthOfLastOpponent === 0;
+    game.attackHistory.unshift({ suite: suite, value: value });
+
+    if (game.attack === 0) {
       return 0;
     }
     if (
-      player.strengthOfLastOpponent === 0 ||
-      value < player.strengthOfLastOpponent
+      game.strengthOfLastOpponent === 0 ||
+      value < game.strengthOfLastOpponent
     ) {
-      player.strengthOfLastOpponent = value;
-      return player.attack;
+      game.strengthOfLastOpponent = value;
+      return game.attack;
     }
-    if (value >= player.strengthOfLastOpponent) {
-      player.strengthOfLastOpponent = 0;
+    if (value >= game.strengthOfLastOpponent) {
+      game.strengthOfLastOpponent = 0;
+      game.attackHistory = [];
       return 0;
     }
   }
 };
 
-const updatePlayerVitality = (suite, value) => {
+const updateVitality = (suite, value) => {
   if (suite === "Clubs" || suite === "Spades") {
-    const damage = value - player.attack > 0 ? value - player.attack : 0;
-    return (player.vitality = player.vitality - damage);
+    const damage = value - game.attack > 0 ? value - game.attack : 0;
+    return (game.vitality = game.vitality - damage);
   }
   if (suite === "Heart") {
-    if (discard.length === 0) return player.vitality;
+    if (discard.length === 0) return game.vitality;
     if (discard[0].suite === "Heart") {
-      return player.vitality;
+      return game.vitality;
     } else {
-      player.vitality = player.vitality + value;
-      return player.vitality > 21 ? 21 : player.vitality;
+      game.vitality = game.vitality + value;
+      return game.vitality > game.maximumVitality
+        ? game.maximumVitality
+        : game.vitality;
     }
   }
-  return player.vitality;
+  return game.vitality;
 };
 
-const updateVisualState = (card, game, player) => {
-  attackElement.innerHTML = player.attack.toString();
-  vitalityElement.innerHTML = player.vitality.toString();
-  strengthOfLastOpponentElement.innerHTML = player.strengthOfLastOpponent.toString();
-  cardsCountElement.innerHTML = game.cardCount.toString();
+const updateVisualState = (card, game) => {
+  attackElement.innerHTML = game.attack.toString();
+  vitalityElement.innerHTML = game.vitality.toString();
+  strengthOfLastOpponentElement.innerHTML = game.strengthOfLastOpponent.toString();
+  cardsCountElement.innerHTML = game.turn.toString();
   card.parentNode.removeChild(card);
 };
 
@@ -162,18 +167,17 @@ board.addEventListener("click", event => {
   const suite = card.getAttribute("suite");
   const value = parseInt(card.getAttribute("value"));
 
-  game.cardCount++;
-  player.attack = updatePlayerAttack(suite, value, player);
-  player.vitality = updatePlayerVitality(suite, value, player);
+  game.turn++;
+  game.attack = updateAttack(suite, value, game);
+  game.vitality = updateVitality(suite, value, game);
 
   discard.unshift({ suite: suite, value: value });
 
-  updateVisualState(card, game, player);
+  updateVisualState(card, game);
 
-  // Get the number of cards left on the board
   const cards = Array.from(board.querySelectorAll("p"));
 
-  if (player.vitality === 0) {
+  if (game.vitality === 0) {
     clearBoard();
     const gameOverMessage = document.createElement("p");
     gameOverMessage.innerHTML = "K-O - You lost!";
