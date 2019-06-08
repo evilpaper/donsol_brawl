@@ -2,7 +2,6 @@
 
 TODO
 - Implement restart
-- Fix bug that give error if first card is a heart
  */
 
 const player = {
@@ -34,7 +33,25 @@ cardsCountElement.innerHTML = game.cardCount;
 
 // Implement the Fisher-Yates Shuffle Algorithm link: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 const shuffle = array => {
-  return array.sort(() => 0.5 - Math.random());
+  let currentIndex = array.length;
+  let temporaryValue;
+  let randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+  //  Old stuff
+  //  return array.sort(() => 0.5 - Math.random());
 };
 
 const getNextCard = deck => {
@@ -61,7 +78,6 @@ const dealCards = () => {
     board.appendChild(cardElement);
     roundElement.innerHTML = game.round.toString();
   }
-  console.log("Cards left in deck is = " + deck.length);
 };
 
 const clearBoard = () => {
@@ -133,7 +149,6 @@ run.addEventListener("click", function(event) {
       const suite = card.getAttribute("suite");
       const value = parseInt(card.getAttribute("value"));
       deck.push({ suite: suite, value: value });
-      console.log(card);
     });
     clearBoard();
     dealCards();
@@ -164,7 +179,6 @@ board.addEventListener("click", event => {
     gameOverMessage.innerHTML = "K-O - You lost!";
     board.appendChild(gameOverMessage);
   } else if (cards.length === 0) {
-    // Check if board is empty
     dealCards();
   }
 });
