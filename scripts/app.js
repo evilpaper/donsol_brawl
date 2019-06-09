@@ -10,6 +10,22 @@ TODO
 - Add sound
 */
 
+class Game {
+  constructor() {
+    this.vitality = 21;
+    this.maximumVitality = 21;
+    this.attack = 0;
+    this.attackHistory = [];
+    this.strengthOfLastOpponent = 0;
+    this.round = 0;
+    this.turn = 0;
+    this.discard = [];
+  }
+}
+
+init();
+
+/*
 const game = {
   vitality: 21,
   maximumVitality: 21,
@@ -20,7 +36,7 @@ const game = {
   turn: 0,
   discard: []
 };
-
+*/
 const board = document.querySelector("section");
 const run = document.querySelector(".d-new-cards");
 
@@ -186,6 +202,10 @@ board.addEventListener("click", event => {
     dealCards();
   }
 });
+
+function init() {
+  return (game = new Game());
+}
 
 shuffle(deck);
 dealCards();
