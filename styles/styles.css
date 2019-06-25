@@ -1,40 +1,58 @@
 html {
-    box-sizing: border-box;
-    font-size: 16px;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-body, h1, h2, h3, h4, h5, h5, p, ol, ul {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-    font-size: 16px;
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 16px;
 }
 
-ol, ul {
-    list-style: none;
+ol,
+ul {
+  list-style: none;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 body {
-    padding: 2em;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.board {
-    cursor: pointer;
-    display: flex;
+.d-board {
+  cursor: pointer;
+  display: flex;
 }
 
-.board p {
-    border: 1px solid grey;
-    padding: 1em;
-    margin: 0.2em;
-    width 25%;
+.d-card {
+  width: 120px;
+  height: 240px;
+  border: 1px solid grey;
+  padding: 1em;
+  margin: 0.2em;
+  text-align: center;
 }

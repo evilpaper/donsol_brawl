@@ -7,15 +7,18 @@
     <link href="styles/styles.css" rel="stylesheet" />
   </head>
   <body class="d-app">
-    <p>Vitality = <span class="d-vitality"></span></p>
-    <p>Attack = <span class="d-attack"></span></p>
-    <p>
-      Strength of last opponent with equipped attacker =
-      <span class="d-attack-break"></span>
-    </p>
-    <p>Round = <span class="d-round"></span></p>
-    <p>Cards played = <span class="d-card-count"></span></p>
-    <section class="board"></section>
+    <section class="d-stats">
+      <p>Vitality ♥ = <span class="d-vitality"></span></p>
+      <p>Attack ♦ = <span class="d-attack"></span></p>
+      <p>
+        Strength of last opponent with equipped attacker =
+        <span class="d-attack-break"></span>
+      </p>
+      <p>Round = <span class="d-round"></span></p>
+      <p>Cards left = <span class="d-cards-in-pile"></span></p>
+      <p>Cards folded = <span class="d-cards-folded"></span></p>
+    </section>
+    <section class="d-board"></section>
     <button class="d-new-cards">Move on</button>
     <script src="scripts/deck.js"></script>
     <script src="scripts/app.js"></script>

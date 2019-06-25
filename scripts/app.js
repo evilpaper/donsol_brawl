@@ -23,35 +23,15 @@ class Game {
   }
 }
 
-init();
-
-/*
-const game = {
-  vitality: 21,
-  maximumVitality: 21,
-  attack: 0,
-  attackHistory: [],
-  strengthOfLastOpponent: 0,
-  round: 0,
-  turn: 0,
-  discard: []
-};
-*/
-const board = document.querySelector("section");
+const board = document.querySelector(".d-board");
 const run = document.querySelector(".d-new-cards");
 
 const vitalityElement = document.querySelector(".d-vitality");
 const attackElement = document.querySelector(".d-attack");
 const roundElement = document.querySelector(".d-round");
-const cardsCountElement = document.querySelector(".d-card-count");
+const foldedElement = document.querySelector(".d-cards-folded");
 const strengthOfLastOpponentElement = document.querySelector(".d-attack-break");
-
-const discard = [];
-
-vitalityElement.innerHTML = game.vitality.toString();
-attackElement.innerHTML = game.attack.toString();
-strengthOfLastOpponentElement.innerHTML = game.strengthOfLastOpponent.toString();
-cardsCountElement.innerHTML = game.turn;
+const deckElement = document.querySelector(".d-cards-in-pile");
 
 const shuffle = array => {
   let currentIndex = array.length;
@@ -85,10 +65,12 @@ const dealCards = _ => {
   game.round++;
 
   const numberOfCards = getNumberOfCardsToDeal();
+
   for (let count = 0; count <= numberOfCards - 1; count++) {
     const card = getNextCard(deck);
     const cardElement = document.createElement("p");
     cardElement.innerHTML = `${card.suite} ${card.value}`;
+    cardElement.classList.add("d-card");
     cardElement.setAttribute("suite", card.suite);
     cardElement.setAttribute("value", card.value);
     board.appendChild(cardElement);
@@ -142,8 +124,8 @@ const updateVitality = (suite, value) => {
     return (game.vitality = game.vitality - damage);
   }
   if (suite === "Heart") {
-    if (discard.length === 0) return game.vitality;
-    if (discard[0].suite === "Heart") {
+    if (game.discard.length === 0) return game.vitality;
+    if (game.discard[0].suite === "Heart") {
       return game.vitality;
     } else {
       game.vitality = game.vitality + value;
@@ -155,11 +137,15 @@ const updateVitality = (suite, value) => {
   return game.vitality;
 };
 
-const updateVisualState = (card, game) => {
+const renderGameStats = (game, deck) => {
   attackElement.innerHTML = game.attack.toString();
   vitalityElement.innerHTML = game.vitality.toString();
   strengthOfLastOpponentElement.innerHTML = game.strengthOfLastOpponent.toString();
-  cardsCountElement.innerHTML = game.turn.toString();
+  foldedElement.innerHTML = game.turn.toString();
+  deckElement.innerHTML = 52 - game.discard.length;
+};
+
+const updateCardVisualState = card => {
   card.parentNode.removeChild(card);
 };
 
@@ -187,9 +173,10 @@ board.addEventListener("click", event => {
   game.attack = updateAttack(suite, value, game);
   game.vitality = updateVitality(suite, value, game);
 
-  discard.unshift({ suite: suite, value: value });
+  game.discard.unshift({ suite: suite, value: value });
 
-  updateVisualState(card, game);
+  renderGameStats(game, deck);
+  updateCardVisualState(card);
 
   const cards = Array.from(board.querySelectorAll("p"));
 
@@ -207,5 +194,7 @@ function init() {
   return (game = new Game());
 }
 
+init();
 shuffle(deck);
 dealCards();
+renderGameStats(game);
