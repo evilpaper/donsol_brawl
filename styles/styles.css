@@ -56,3 +56,7 @@ body {
   margin: 0.2em;
   text-align: center;
 }
+
+.d-game-over {
+  width: 100%;
+}

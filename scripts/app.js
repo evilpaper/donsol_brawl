@@ -180,9 +180,10 @@ board.addEventListener("click", event => {
 
   const cards = Array.from(board.querySelectorAll("p"));
 
-  if (game.vitality === 0) {
+  if (game.vitality <= 0) {
     clearBoard();
-    const gameOverMessage = document.createElement("p");
+    const gameOverMessage = document.createElement("h1");
+    gameOverMessage.classList.add("d-game-over");
     gameOverMessage.innerHTML = "K-O - You lost!";
     board.appendChild(gameOverMessage);
   } else if (cards.length === 0) {
