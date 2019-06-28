@@ -48,6 +48,14 @@ body {
   display: flex;
 }
 
+.d-stats {
+  width: 480px;
+}
+
+.d-debug {
+  width: 480px;
+}
+
 .d-card {
   width: 120px;
   height: 240px;
