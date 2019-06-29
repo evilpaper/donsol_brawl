@@ -6,22 +6,24 @@
     <title>Donsol Brawl</title>
     <link href="styles/styles.css" rel="stylesheet" />
   </head>
-  <body class="d-app">
-    <section class="d-stats">
-      <p>Vitality ♥ = <span class="d-vitality"></span></p>
-      <p>Attack ♦ = <span class="d-attack"></span></p>
-      <p>
-        Strength of last opponent with equipped attacker =
-        <span class="d-attack-break"></span>
-      </p>
-    </section>
-    <section class="d-debug">
-      <p>Round = <span class="d-round"></span></p>
-      <p>Cards left = <span class="d-cards-in-pile"></span></p>
-      <p>Cards folded = <span class="d-cards-folded"></span></p>
-    </section>
-    <section class="d-board"></section>
-    <button class="d-new-cards">Move on</button>
+  <body>
+    <main class="d-app">
+      <section class="d-stats">
+        <p>Vitality = <span class="d-vitality"></span>♥</p>
+        <p>Attack = <span class="d-attack"></span>♦</p>
+        <p>
+          Strength of last opponent with equipped attacker =
+          <span class="d-attack-break"></span>
+        </p>
+        <button class="d-new-cards">Dodge</button>
+      </section>
+      <section class="d-debug">
+        <p>Round = <span class="d-round"></span></p>
+        <p>Cards left = <span class="d-cards-in-pile"></span></p>
+        <p>Cards folded = <span class="d-cards-folded"></span></p>
+      </section>
+      <section class="d-board"></section>
+    </main>
     <script src="scripts/deck.js"></script>
     <script src="scripts/app.js"></script>
   </body>

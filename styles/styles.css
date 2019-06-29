@@ -36,6 +36,12 @@ img {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-app {
   padding: 2em;
   display: flex;
   justify-content: center;
@@ -49,20 +55,33 @@ body {
 }
 
 .d-stats {
-  width: 480px;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+.d-stats p {
+  margin-right: 20px;
 }
 
 .d-debug {
-  width: 480px;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+.d-debug p {
+  margin-right: 20px;
 }
 
 .d-card {
-  width: 120px;
-  height: 240px;
+  width: 242px;
+  height: 342px;
   border: 1px solid grey;
   padding: 1em;
   margin: 0.2em;
   text-align: center;
+  border-radius: 10px;
 }
 
 .d-game-over {
