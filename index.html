@@ -4,18 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Donsol Brawl</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap"
+      rel="stylesheet"
+    />
     <link href="styles/styles.css" rel="stylesheet" />
   </head>
   <body>
     <main class="d-app">
-      <section class="d-stats">
-        <p>Vitality = <span class="d-vitality"></span>♥</p>
-        <p>Attack = <span class="d-attack"></span>♦</p>
-        <p>
-          Strength of last opponent with equipped attacker =
-          <span class="d-attack-break"></span>
-        </p>
-        <button class="d-new-cards">Dodge</button>
+      <section class="d-hud">
+        <div class="d-stats">
+          <p>Vitality <span class="d-vitality"></span> ♥</p>
+          <p>Attack <span class="d-attack"></span> ♦</p>
+          <p>
+            Strength of last opponent with equipped attacker
+            <span class="d-attack-break"></span>
+          </p>
+        </div>
+        <button class="d-new-cards">Pass</button>
       </section>
       <section class="d-debug">
         <p>Round = <span class="d-round"></span></p>

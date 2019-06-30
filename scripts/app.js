@@ -69,8 +69,9 @@ const dealCards = _ => {
   for (let count = 0; count <= numberOfCards - 1; count++) {
     const card = getNextCard(deck);
     const cardElement = document.createElement("p");
-    cardElement.innerHTML = `${card.suite} ${card.value}`;
+    // cardElement.innerHTML = `${card.suite} ${card.value}`;
     cardElement.classList.add("d-card");
+    cardElement.style.backgroundImage = `url(${card.img})`;
     cardElement.setAttribute("suite", card.suite);
     cardElement.setAttribute("value", card.value);
     board.appendChild(cardElement);

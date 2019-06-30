@@ -18,11 +18,14 @@ h5,
 h5,
 p,
 ol,
-ul {
+ul,
+button {
   margin: 0;
   padding: 0;
   font-weight: normal;
   font-size: 16px;
+  font-family: "Inconsolata", monospace;
+  color: beige;
 }
 
 ol,
@@ -39,6 +42,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  background-color: black;
 }
 
 .d-app {
@@ -54,20 +59,39 @@ body {
   display: flex;
 }
 
+.d-hud {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .d-stats {
   display: flex;
   flex-direction: row;
-  align-self: flex-start;
+  justify-content: flex-start;
 }
 
 .d-stats p {
   margin-right: 20px;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+
+.d-new-cards {
+  background-color: black;
+  border: 1px solid beige;
+  padding: 0.2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 20px;
 }
 
 .d-debug {
   display: flex;
   flex-direction: row;
   align-self: flex-start;
+  margin-bottom: 1em;
 }
 
 .d-debug p {
@@ -76,12 +100,12 @@ body {
 
 .d-card {
   width: 242px;
-  height: 342px;
+  height: 340px;
   border: 1px solid grey;
-  padding: 1em;
   margin: 0.2em;
   text-align: center;
   border-radius: 10px;
+  background-size: cover;
 }
 
 .d-game-over {
