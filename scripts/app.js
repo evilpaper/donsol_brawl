@@ -147,7 +147,11 @@ const renderGameStats = (game, deck) => {
 };
 
 const updateCardVisualState = card => {
-  card.parentNode.removeChild(card);
+  // card.parentNode.removeChild(card);
+};
+
+const flipCard = card => {
+  card.classList.add("flipped");
 };
 
 run.addEventListener("click", function(event) {
@@ -177,9 +181,12 @@ board.addEventListener("click", event => {
   game.discard.unshift({ suite: suite, value: value });
 
   renderGameStats(game, deck);
+  flipCard(card);
   updateCardVisualState(card);
 
+  // Need to fihure out somethinge here instead since I only flip the card now
   const cards = Array.from(board.querySelectorAll("p"));
+  const cardsOnBoard = cards
 
   if (game.vitality <= 0) {
     clearBoard();

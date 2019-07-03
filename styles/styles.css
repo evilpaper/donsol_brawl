@@ -108,6 +108,10 @@ body {
   background-size: cover;
 }
 
+.flipped {
+  opacity: 0.5;
+}
+
 .d-game-over {
   width: 100%;
 }
