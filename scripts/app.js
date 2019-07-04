@@ -146,10 +146,6 @@ const renderGameStats = (game, deck) => {
   deckElement.innerHTML = 52 - game.discard.length;
 };
 
-const updateCardVisualState = card => {
-  // card.parentNode.removeChild(card);
-};
-
 const flipCard = card => {
   card.classList.add("flipped");
 };
@@ -169,6 +165,10 @@ run.addEventListener("click", function(event) {
   }
 });
 
+const updateCardVisualState = card => {
+  card.parentNode.removeChild(card);
+};
+
 board.addEventListener("click", event => {
   const card = event.target;
   const suite = card.getAttribute("suite");
@@ -182,11 +182,9 @@ board.addEventListener("click", event => {
 
   renderGameStats(game, deck);
   flipCard(card);
-  updateCardVisualState(card);
 
-  // Need to fihure out somethinge here instead since I only flip the card now
-  const cards = Array.from(board.querySelectorAll("p"));
-  const cardsOnBoard = cards
+  const cards = Array.from(board.querySelectorAll(".flipped"));
+  console.log(cards);
 
   if (game.vitality <= 0) {
     clearBoard();
@@ -194,7 +192,8 @@ board.addEventListener("click", event => {
     gameOverMessage.classList.add("d-game-over");
     gameOverMessage.innerHTML = "K-O - You lost!";
     board.appendChild(gameOverMessage);
-  } else if (cards.length === 0) {
+  } else if (cards.length === 4) {
+    clearBoard();
     dealCards();
   }
 });
