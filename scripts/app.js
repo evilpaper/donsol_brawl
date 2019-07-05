@@ -12,8 +12,8 @@ TODO
 
 class Game {
   constructor() {
-    this.vitality = 21;
-    this.maximumVitality = 21;
+    this.vitality = 1000;
+    this.maximumVitality = 1000;
     this.attack = 0;
     this.attackHistory = [];
     this.strengthOfLastOpponent = 0;
@@ -193,8 +193,16 @@ board.addEventListener("click", event => {
     gameOverMessage.innerHTML = "K-O - You lost!";
     board.appendChild(gameOverMessage);
   } else if (cards.length === 4) {
-    clearBoard();
-    dealCards();
+    if (game.discard.length === 52) {
+      clearBoard();
+      const gameOverMessage = document.createElement("h1");
+      gameOverMessage.classList.add("d-game-over");
+      gameOverMessage.innerHTML = "K.O - You win!";
+      board.appendChild(gameOverMessage);
+    } else {
+      clearBoard();
+      dealCards();
+    }
   }
 });
 
