@@ -12,8 +12,8 @@ TODO
 
 class Game {
   constructor() {
-    this.vitality = 1000;
-    this.maximumVitality = 1000;
+    this.vitality = 21;
+    this.maximumVitality = 21;
     this.attack = 0;
     this.attackHistory = [];
     this.strengthOfLastOpponent = 0;

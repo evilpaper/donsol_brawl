@@ -38,6 +38,13 @@ img {
   height: auto;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
 body {
   display: flex;
   justify-content: center;
