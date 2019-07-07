@@ -64,6 +64,8 @@ body {
 .d-board {
   cursor: pointer;
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .d-hud {
@@ -106,15 +108,27 @@ body {
 }
 
 .d-card {
+  /*
   width: 242px;
   height: 340px;
+  */
+  width: 15.125em;
+  height: 21.25em;
+  /*
   border: 1px solid grey;
+  */
   margin: 0.2em;
   text-align: center;
   border-radius: 10px;
   background-size: cover;
+  object-fit: cover;
 }
-
+@media (max-width: 800px) {
+  .d-card {
+    width: 10em;
+    height: 16em;
+  }
+}
 .flipped {
   opacity: 0.5;
 }
