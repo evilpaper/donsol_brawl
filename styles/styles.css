@@ -1,6 +1,5 @@
 html {
   box-sizing: border-box;
-  font-size: 16px;
 }
 
 *,
@@ -61,13 +60,6 @@ body {
   flex-direction: column;
 }
 
-.d-board {
-  cursor: pointer;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
 .d-hud {
   display: flex;
   flex-direction: row;
@@ -87,6 +79,12 @@ body {
   padding-bottom: 0.2em;
 }
 
+@media (max-width: 800px) {
+  .d-stats p {
+    font-size: 10px;
+  }
+}
+
 .d-new-cards {
   background-color: black;
   border: 1px solid beige;
@@ -94,6 +92,12 @@ body {
   padding-left: 1em;
   padding-right: 1em;
   border-radius: 20px;
+}
+
+@media (max-width: 800px) {
+  .d-new-cards {
+    font-size: 10px;
+  }
 }
 
 .d-debug {
@@ -107,6 +111,19 @@ body {
   margin-right: 20px;
 }
 
+@media (max-width: 800px) {
+  .d-debug p {
+    font-size: 10px;
+  }
+}
+
+.d-board {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .d-card {
   /*
   width: 242px;
@@ -114,21 +131,20 @@ body {
   */
   width: 15.125em;
   height: 21.25em;
-  /*
-  border: 1px solid grey;
-  */
   margin: 0.2em;
   text-align: center;
   border-radius: 10px;
   background-size: cover;
   object-fit: cover;
 }
+
 @media (max-width: 800px) {
   .d-card {
-    width: 10em;
-    height: 16em;
+    width: 9em;
+    height: 12.64em;
   }
 }
+
 .flipped {
   opacity: 0.5;
 }
