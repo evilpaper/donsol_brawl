@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 *,
@@ -22,7 +23,7 @@ button {
   margin: 0;
   padding: 0;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 1rem;
   font-family: "Inconsolata", monospace;
   color: beige;
 }
@@ -53,7 +54,7 @@ body {
 }
 
 .d-app {
-  padding: 2em;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,14 +75,14 @@ body {
 }
 
 .d-stats p {
-  margin-right: 20px;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
+  margin-right: 2rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 }
 
 @media (max-width: 800px) {
   .d-stats p {
-    font-size: 10px;
+    font-size: 0.8rem;
   }
 }
 
@@ -91,12 +92,12 @@ body {
   padding: 0.2em;
   padding-left: 1em;
   padding-right: 1em;
-  border-radius: 20px;
+  border-radius: 1rem;
 }
 
 @media (max-width: 800px) {
   .d-new-cards {
-    font-size: 10px;
+    font-size: 0.8rem;
   }
 }
 
@@ -108,12 +109,12 @@ body {
 }
 
 .d-debug p {
-  margin-right: 20px;
+  margin-right: 2rem;
 }
 
 @media (max-width: 800px) {
   .d-debug p {
-    font-size: 10px;
+    font-size: 0.8rem;
   }
 }
 
@@ -129,19 +130,32 @@ body {
   width: 242px;
   height: 340px;
   */
-  width: 15.125em;
-  height: 21.25em;
-  margin: 0.2em;
+  width: 15.125rem;
+  /*
+  height: 21.25rem;
+  */
+  height: auto;
+  margin: 0.2rem;
   text-align: center;
   border-radius: 10px;
   background-size: cover;
   object-fit: cover;
 }
 
+@media (max-width: 599px) {
+}
+@media (min-width: 600px) {
+}
+@media (min-width: 900px) {
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 1800px) {
+}
+
 @media (max-width: 800px) {
   .d-card {
     width: 9em;
-    height: 12.64em;
   }
 }
 
