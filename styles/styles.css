@@ -130,7 +130,7 @@ body {
   width: 242px;
   height: 340px;
   */
-  width: 15.125rem;
+  width: 14rem;
   /*
   height: 21.25rem;
   */
@@ -143,20 +143,20 @@ body {
 }
 
 @media (max-width: 599px) {
+  .d-card {
+    width: 9em;
+  }
 }
 @media (min-width: 600px) {
 }
 @media (min-width: 900px) {
+  .d-card {
+    width: 12em;
+  }
 }
 @media (min-width: 1200px) {
 }
 @media (min-width: 1800px) {
-}
-
-@media (max-width: 800px) {
-  .d-card {
-    width: 9em;
-  }
 }
 
 .flipped {
