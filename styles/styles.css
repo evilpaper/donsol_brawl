@@ -61,11 +61,33 @@ body {
   flex-direction: column;
 }
 
+@media (max-width: 599px) {
+  .d-app {
+    padding: 0;
+  }
+}
+@media (min-width: 600px) {
+  .d-app {
+    padding: 0.4rem;
+  }
+}
+
 .d-hud {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+}
+
+@media (max-width: 599px) {
+  .d-hud {
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 600px) {
+  .d-hud {
+    flex-wrap: wrap;
+  }
 }
 
 .d-stats {
