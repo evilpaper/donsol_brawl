@@ -24,7 +24,7 @@ class Game {
 }
 
 const board = document.querySelector(".d-board");
-const run = document.querySelector(".d-new-cards");
+const run = document.querySelector(".d-pass");
 
 const vitalityElement = document.querySelector(".d-vitality");
 const attackElement = document.querySelector(".d-attack");
@@ -55,7 +55,7 @@ const getNextCard = deck => {
 };
 
 const getNumberOfCardsToDeal = () => {
-  const cards = Array.from(board.querySelectorAll("p"));
+  const cards = Array.from(board.querySelectorAll("img"));
   return 4 - cards.length;
 };
 
@@ -86,9 +86,9 @@ const dealCards = _ => {
 };
 
 const clearBoard = _ => {
-  const cards = Array.from(board.querySelectorAll("p"));
+  const cards = Array.from(board.querySelectorAll("img"));
   cards.forEach(card => {
-    var elem = board.querySelector("p");
+    var elem = board.querySelector("img");
     elem.parentNode.removeChild(elem);
   });
 };
@@ -157,7 +157,7 @@ const flipCard = card => {
 };
 
 run.addEventListener("click", function(event) {
-  const cards = Array.from(board.querySelectorAll("p"));
+  const cards = Array.from(board.querySelectorAll("img"));
   if (cards.length === 4 || cards.length === 1) {
     cards.forEach(card => {
       const suite = card.getAttribute("suite");

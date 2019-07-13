@@ -90,10 +90,13 @@ body {
   }
 }
 
+/* THE STATS COMPONENT */
+
 .d-stats {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  border: 1px solid magenta;
 }
 
 .d-stats p {
@@ -108,26 +111,25 @@ body {
   }
 }
 
-.d-new-cards {
+.d-pass {
   background-color: black;
-  border: 1px solid beige;
-  padding: 0.2em;
-  padding-left: 1em;
-  padding-right: 1em;
-  border-radius: 1rem;
+  border: 1px solid black;
 }
 
 @media (max-width: 800px) {
-  .d-new-cards {
+  .d-pass {
     font-size: 0.8rem;
   }
 }
+
+/* THE DEBUG COMPONENT */
 
 .d-debug {
   display: flex;
   flex-direction: row;
   align-self: flex-start;
   margin-bottom: 1em;
+  border: 1px solid yellow;
 }
 
 .d-debug p {
@@ -140,11 +142,14 @@ body {
   }
 }
 
+/* THE BOARD COMPONENT */
+
 .d-board {
   cursor: pointer;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  border: 1px solid cyan;
 }
 
 .d-card {
