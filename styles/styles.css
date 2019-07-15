@@ -198,8 +198,9 @@ body {
 }
 
 .d-card {
-  height: auto;
+  min-height: auto;
   border-radius: 10px;
+  align-self: center;
 }
 
 @media (max-width: 599px) {
