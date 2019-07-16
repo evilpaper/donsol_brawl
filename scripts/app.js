@@ -128,7 +128,8 @@ const updateAttack = (suite, value, game) => {
 const updateVitality = (suite, value) => {
   if (suite === "Clubs" || suite === "Spades") {
     const damage = value - game.attack > 0 ? value - game.attack : 0;
-    return (game.vitality = game.vitality - damage);
+    const vitality = (game.vitality = game.vitality - damage);
+    return vitality < 0 ? 0 : vitality;
   }
   if (suite === "Heart") {
     if (game.discard.length === 0) return game.vitality;
