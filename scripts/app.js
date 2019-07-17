@@ -161,6 +161,7 @@ run.addEventListener("click", function(event) {
   const cards = Array.from(board.querySelectorAll("img"));
   if (cards.length === 4 || cards.length === 1) {
     cards.forEach(card => {
+      console.log(card);
       const suite = card.getAttribute("suite");
       const value = parseInt(card.getAttribute("value"));
       deck.push({ suite: suite, value: value });
@@ -197,14 +198,14 @@ board.addEventListener("click", event => {
     clearBoard();
     const gameOverMessage = document.createElement("h1");
     gameOverMessage.classList.add("d-game-over");
-    gameOverMessage.innerHTML = "K-O - You lost!";
+    gameOverMessage.innerHTML = "K.O! You lost!";
     board.appendChild(gameOverMessage);
   } else if (cards.length === 4) {
     if (game.discard.length === 52) {
       clearBoard();
       const gameOverMessage = document.createElement("h1");
       gameOverMessage.classList.add("d-game-over");
-      gameOverMessage.innerHTML = "K.O - You win!";
+      gameOverMessage.innerHTML = "K.O! You win!";
       board.appendChild(gameOverMessage);
     } else {
       clearBoard();

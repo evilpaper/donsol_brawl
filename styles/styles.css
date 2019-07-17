@@ -120,6 +120,10 @@ body {
   font-size: 2rem;
 }
 
+.d-vitality-icon {
+  height: 1rem;
+}
+
 @media (max-width: 599px) {
   .d-stats p {
     font-size: 0.6rem;
