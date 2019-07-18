@@ -18,20 +18,42 @@
     <main class="d-app">
       <section class="d-hud">
         <div class="d-stats">
-          <p>
-            Vitality
+          <div class="d-stats--stat">
+            <div>           
+              <p class="d-stats--stat--label">
+                Vitality
+                  <div class="icon baseline">
+                    <img src="images/heart.svg">
+                  </div>
+              </p>
+            </div>
             <span class="d-vitality"></span>
-          </p>
-          <p>
-            Attack ♦
+          </div>
+          <div class="d-stats--stat">
+            <div>
+              <p class="d-stats--stat--label">
+                Attack
+                <div class="icon baseline">
+                  <img src="images/tile.svg">
+                </div>
+              </p>
+            </div>
             <span class="d-attack"></span>
-          </p>
-          <p>
-            Last opponent
+          </div>
+          <div class="d-stats--stat">
+            <div>
+              <p>
+                Last opponent
+                <div class="icon baseline">
+                  <img src="images/clover.svg">
+                  <img src="images/spade.svg">
+                </div>
+              </p>
+            </div>
             <span class="d-attack-break"></span>
-          </p>
+          </div>
         </div>
-        <button class="d-pass">Pass</button>
+        <button class="d-pass">Move on</button>
       </section>
 
       <section class="d-board"></section>

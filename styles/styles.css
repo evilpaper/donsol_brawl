@@ -53,6 +53,28 @@ body {
   background-color: black;
 }
 
+/* SVG ICON SYSTEM */
+/*
+Great article about svg icons https://blog.prototypr.io/align-svg-icons-to-text-and-say-goodbye-to-font-icons-d44b3d7b26b4
+*/
+
+.icon {
+  margin: 0.6rem;
+  display: inline-flex;
+  align-self: center;
+}
+
+.icon img {
+  height: 1rem;
+  width: 1rem;
+}
+
+.icon.baseline svg,
+.icon img {
+  top: 0.125em;
+  position: relative;
+}
+
 @media (max-width: 599px) {
   body {
     align-items: flex-start;
@@ -104,7 +126,7 @@ body {
   /* border: 1px solid magenta; */
 }
 
-.d-stats p {
+.d-stats--stat {
   margin-right: 2rem;
   padding-bottom: 0.2rem;
   font-weight: 700;
@@ -113,15 +135,21 @@ body {
   flex-direction: column;
 }
 
+.d-stats--stat--label {
+  display: flex;
+  flex-direction: row;
+}
+
+.d-stats--stat p {
+  display: inline-flex;
+  flex-direction: row;
+}
+
 .d-vitality,
 .d-attack,
 .d-attack-break {
   font-weight: 900;
   font-size: 2rem;
-}
-
-.d-vitality-icon {
-  height: 1rem;
 }
 
 @media (max-width: 599px) {
@@ -152,6 +180,7 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
   height: 2rem;
+  align-self: center;
 }
 
 @media (max-width: 599px) {
