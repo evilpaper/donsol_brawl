@@ -194,7 +194,7 @@ Great article about svg icons https://blog.prototypr.io/align-svg-icons-to-text-
     font-size: 0.8rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: 1.1rem;
     height: 2.2rem;
   }
 }
@@ -208,7 +208,7 @@ Great article about svg icons https://blog.prototypr.io/align-svg-icons-to-text-
 @media (min-width: 900px) {
   .d-pass {
     font-size: 1rem;
-    border-radius: 1rem;
+    border-radius: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
     height: 3rem;
