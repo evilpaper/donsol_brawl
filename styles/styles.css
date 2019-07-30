@@ -1,3 +1,5 @@
+/* A MINIMAL RESET */
+
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -45,18 +47,7 @@ button:focus {
   outline: none;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: black;
-}
-
-/* SVG ICON SYSTEM */
-/*
-Great article about svg icons https://blog.prototypr.io/align-svg-icons-to-text-and-say-goodbye-to-font-icons-d44b3d7b26b4
-*/
+/* A SVG ICON SYSTEM */
 
 .icon {
   margin: 0.4rem;
@@ -75,11 +66,25 @@ Great article about svg icons https://blog.prototypr.io/align-svg-icons-to-text-
   position: relative;
 }
 
+/* THE COMPONENETS */
+
+/* THE BODY COMPONENT - PLACEMENT */
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
 @media (max-width: 599px) {
   body {
     align-items: flex-start;
   }
 }
+
+/* THE APP COMPONENT */
 
 .d-app {
   padding: 2rem;
@@ -117,13 +122,10 @@ Great article about svg icons https://blog.prototypr.io/align-svg-icons-to-text-
   }
 }
 
-/* THE STATS COMPONENT */
-
 .d-stats {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  /* border: 1px solid magenta; */
 }
 
 .d-stats--stat {
@@ -215,35 +217,12 @@ Great article about svg icons https://blog.prototypr.io/align-svg-icons-to-text-
   }
 }
 
-/* THE DEBUG COMPONENT */
-
-.d-debug {
-  display: flex;
-  flex-direction: row;
-  align-self: flex-start;
-  margin-top: 1rem;
-  /* border: 1px solid yellow; */
-}
-
-.d-debug p {
-  margin-right: 2rem;
-  font-family: "Inconsolata", monospace;
-  color: gray;
-}
-
-@media (max-width: 800px) {
-  .d-debug {
-    opacity: 0;
-  }
-}
-
 /* THE BOARD COMPONENT */
 
 .d-board {
   cursor: pointer;
   display: flex;
   flex-wrap: wrap;
-  /* border: 1px solid cyan; */
 }
 
 .d-card {
@@ -256,29 +235,38 @@ Great article about svg icons https://blog.prototypr.io/align-svg-icons-to-text-
   .d-board {
     justify-content: center;
   }
+  /*
   .d-card {
     width: 46%;
     margin: 0.4%;
   }
+  */
 }
 @media (min-width: 600px) {
+  .d-board {
+    width: 100%;
+  }
+  /*
   .d-card {
     width: 48%;
     margin: 0.4%;
   }
+  */
 }
 @media (min-width: 900px) {
   .d-board {
+    width: 75vw;
+    height: 40vh;
     justify-content: space-between;
   }
+  /*
   .d-card {
     width: 24%;
   }
+  */
 }
-@media (min-width: 1200px) {
-}
-@media (min-width: 1800px) {
-}
+
+/* UTILITISE */
 
 .flipped {
   opacity: 0.5;
@@ -286,4 +274,20 @@ Great article about svg icons https://blog.prototypr.io/align-svg-icons-to-text-
 
 .d-game-over {
   width: 100%;
+}
+
+@media (max-width: 599px) {
+}
+@media (min-width: 600px) {
+}
+@media (min-width: 900px) {
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 1800px) {
+}
+
+@media (min-width: 0px) and (max-width: 767px) and (orientation: portrait) {
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
 }

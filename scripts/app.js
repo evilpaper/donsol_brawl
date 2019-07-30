@@ -1,13 +1,28 @@
 /*
 
 TODO
-- Implement restart - hundredrabbits donsol do this by switching "run" to "restart"
-- Write some tests, for practice
-- Position element correctly on screen
-- Make it responsive
-- Add styles
-- Add effects
+- Add restart - hundredrabbits donsol do this by switching "run" to "restart"
+- Make it obvious when you can run and not by highligting the button
+- Update card graphical style so it's consistent
+- Minify card images
+- Make the "board" size static so it does not collapse during win or lose (eg. when there are no cards)
+- Make sure "deck" shows right value, especially when cards should be put back
+- Refactor css so each part use medai queries and looks nice on screens in dev tools
+- Add animations to
+  - Cards fade in, cards fade out
+  - Stats update 
+  - Add effects
+    - WHAM
+    - POW
+    etc.
 - Add sound
+  - Background music like Donsol from hundredrabbits
+  - Flip card effects like Crad Crawl
+- Refactor code so it's easy to read and change
+  - consider the advices from Zell Liew
+  - check different patterns and similra games like Donsol
+  - consider splitting up state and view
+  - Write some tests, for practice
 */
 
 class Game {
@@ -28,8 +43,6 @@ const run = document.querySelector(".d-pass");
 
 const vitalityElement = document.querySelector(".d-vitality");
 const attackElement = document.querySelector(".d-attack");
-const roundElement = document.querySelector(".d-round");
-const foldedElement = document.querySelector(".d-cards-folded");
 const strengthOfLastOpponentElement = document.querySelector(".d-attack-break");
 const deckElement = document.querySelector(".d-cards-in-pile");
 
@@ -81,7 +94,6 @@ const dealCards = _ => {
     cardElement.setAttribute("value", card.value);
 
     board.appendChild(cardElement);
-    roundElement.innerHTML = game.round.toString();
   }
 };
 
@@ -149,8 +161,6 @@ const renderGameStats = (game, deck) => {
   attackElement.innerHTML = game.attack.toString();
   vitalityElement.innerHTML = game.vitality.toString();
   strengthOfLastOpponentElement.innerHTML = game.strengthOfLastOpponent.toString();
-  foldedElement.innerHTML = game.turn.toString();
-  deckElement.innerHTML = 52 - game.discard.length;
 };
 
 const flipCard = card => {
