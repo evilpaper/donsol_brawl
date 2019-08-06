@@ -75,6 +75,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   background-color: black;
 }
 
@@ -87,22 +88,38 @@ body {
 /* THE APP COMPONENT */
 
 .d-app {
-  padding: 2rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
 @media (max-width: 599px) {
   .d-app {
-    padding: 0;
+    justify-content: start;
+    width: 100vw;
+    height: 100vh;
   }
 }
 
 @media (min-width: 600px) {
   .d-app {
-    padding: 0.4rem;
+    justify-content: start;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@media (min-width: 900px) {
+  .d-app {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .d-app {
+    width: 80vw;
+    height: auto;
+    justify-content: center;
   }
 }
 
@@ -113,12 +130,14 @@ body {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  padding: 1%;
+  border: 1px solid yellow;
 }
 
 @media (max-width: 599px) {
   .d-hud {
     flex-wrap: wrap;
-    padding: 1rem;
+    padding: 0.3rem;
   }
 }
 
@@ -129,8 +148,6 @@ body {
 }
 
 .d-stats--stat {
-  margin-right: 2rem;
-  padding-bottom: 0.2rem;
   font-weight: 700;
   font-style: italic;
   display: flex;
@@ -151,7 +168,6 @@ body {
 .d-attack,
 .d-attack-break {
   font-weight: 900;
-  font-size: 2rem;
 }
 
 @media (max-width: 599px) {
@@ -164,7 +180,7 @@ body {
   .d-vitality,
   .d-attack,
   .d-attack-break {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -178,32 +194,31 @@ body {
 }
 
 .d-pass {
-  background-color: white;
+  background-color: black;
   border: 2px solid white;
+  color: white;
   font-weight: 700;
-  font-size: 1.2rem;
   font-style: italic;
-  color: black;
-  border-radius: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  height: 2rem;
   align-self: center;
 }
 
 @media (max-width: 599px) {
   .d-pass {
-    font-size: 0.8rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    border-radius: 1.1rem;
-    height: 2.2rem;
+    font-size: 0.6rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    border-radius: 10%;
+    height: 80%;
   }
 }
 
 @media (min-width: 600px) {
   .d-pass {
     font-size: 0.6rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    border-radius: 10%;
+    height: 80%;
   }
 }
 
@@ -223,6 +238,9 @@ body {
   cursor: pointer;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid magenta;
 }
 
 .d-card {
@@ -231,39 +249,40 @@ body {
   align-self: center;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 599px) and (orientation: portrait) {
   .d-board {
-    justify-content: center;
   }
-  /*
-  .d-card {
-    width: 46%;
-    margin: 0.4%;
-  }
-  */
-}
-@media (min-width: 600px) {
-  .d-board {
-    width: 100%;
-  }
-  /*
   .d-card {
     width: 48%;
-    margin: 0.4%;
+    margin: 1%;
   }
-  */
 }
-@media (min-width: 900px) {
+
+@media (max-width: 599px) and (orientation: landscape) {
   .d-board {
-    width: 75vw;
-    height: 40vh;
-    justify-content: space-between;
   }
-  /*
   .d-card {
     width: 24%;
+    margin: 0.4%;
   }
-  */
+}
+
+@media (min-width: 600px) and (orientation: portrait) {
+  .d-board {
+  }
+  .d-card {
+    width: 40%;
+    margin: 1%;
+  }
+}
+
+@media (min-width: 600px) and (orientation: landscape) {
+  .d-board {
+  }
+  .d-card {
+    width: 24%;
+    margin: 0.4%;
+  }
 }
 
 /* UTILITISE */
@@ -276,18 +295,22 @@ body {
   width: 100%;
 }
 
+/* For phone only */
 @media (max-width: 599px) {
 }
+/* For tablet portrait and up */
 @media (min-width: 600px) {
 }
+/* For tablet landscape and up */
 @media (min-width: 900px) {
 }
+/* For desktop and up */
 @media (min-width: 1200px) {
 }
+/* For big desktop and up */
 @media (min-width: 1800px) {
 }
-
-@media (min-width: 0px) and (max-width: 767px) and (orientation: portrait) {
+@media (min-width: 0px) and (max-width: 599px) and (orientation: landscape) {
 }
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+@media (min-width: 0px) and (max-width: 599px) and (orientation: landscape) {
 }
