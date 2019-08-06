@@ -131,7 +131,6 @@ body {
   justify-content: space-between;
   width: 100%;
   padding: 1%;
-  border: 1px solid yellow;
 }
 
 @media (max-width: 599px) {
@@ -240,7 +239,6 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  border: 1px solid magenta;
 }
 
 .d-card {
