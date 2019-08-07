@@ -98,6 +98,7 @@ body {
     justify-content: start;
     width: 100vw;
     height: 100vh;
+    padding: 1rem;
   }
 }
 
@@ -106,6 +107,7 @@ body {
     justify-content: start;
     width: 100vw;
     height: 100vh;
+    padding: 1rem;
   }
 }
 
@@ -129,6 +131,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: baseline;
   width: 100%;
   padding: 1%;
 }
@@ -136,7 +139,6 @@ body {
 @media (max-width: 599px) {
   .d-hud {
     flex-wrap: wrap;
-    padding: 0.3rem;
   }
 }
 
@@ -190,44 +192,36 @@ body {
   .d-stats p {
     font-size: 0.8rem;
   }
+  .d-vitality,
+  .d-attack,
+  .d-attack-break {
+    font-size: 2rem;
+  }
 }
 
 .d-pass {
   background-color: black;
-  border: 2px solid white;
+  border: 2px solid black;
   color: white;
   font-weight: 700;
   font-style: italic;
-  align-self: center;
 }
 
 @media (max-width: 599px) {
   .d-pass {
     font-size: 0.6rem;
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
-    border-radius: 10%;
-    height: 80%;
   }
 }
 
 @media (min-width: 600px) {
   .d-pass {
     font-size: 0.6rem;
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
-    border-radius: 10%;
-    height: 80%;
   }
 }
 
 @media (min-width: 900px) {
   .d-pass {
-    font-size: 1rem;
-    border-radius: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    height: 3rem;
+    font-size: 0.8rem;
   }
 }
 
