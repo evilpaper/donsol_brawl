@@ -81,11 +81,6 @@ const dealCards = _ => {
 
   for (let count = 0; count <= numberOfCards - 1; count++) {
     const card = getNextCard(deck);
-    /*
-    const cardElement = document.createElement("p");
-    cardElement.classList.add("d-card");
-    cardElement.style.backgroundImage = `url(${card.img})`;
-    */
     const cardElement = document.createElement("img");
     cardElement.classList.add("d-card");
     cardElement.src = `${card.img}`;
@@ -95,6 +90,8 @@ const dealCards = _ => {
 
     board.appendChild(cardElement);
   }
+  console.log(`Cards in deck ${deck.length}`);
+  console.log(`cards in discard ${game.discard.length}`);
 };
 
 const clearBoard = _ => {
@@ -158,9 +155,10 @@ const updateVitality = (suite, value) => {
 };
 
 const renderGameStats = (game, deck) => {
-  attackElement.innerHTML = game.attack.toString();
+  attackElement.innerHTML = game.attack === 0 ? "-" : game.attack.toString();
   vitalityElement.innerHTML = game.vitality.toString();
-  strengthOfLastOpponentElement.innerHTML = game.strengthOfLastOpponent.toString();
+  strengthOfLastOpponentElement.innerHTML =
+    game.attack === 0 ? "-" : game.strengthOfLastOpponent.toString();
 };
 
 const flipCard = card => {
@@ -174,7 +172,8 @@ run.addEventListener("click", function(event) {
       console.log(card);
       const suite = card.getAttribute("suite");
       const value = parseInt(card.getAttribute("value"));
-      deck.push({ suite: suite, value: value });
+      const img = card.getAttribute("img");
+      deck.push({ suite: suite, value: value, img: img });
     });
     clearBoard();
     dealCards();
@@ -202,7 +201,6 @@ board.addEventListener("click", event => {
   flipCard(card);
 
   const cards = Array.from(board.querySelectorAll(".flipped"));
-  console.log(cards);
 
   if (game.vitality <= 0) {
     clearBoard();

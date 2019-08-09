@@ -66,9 +66,11 @@ button:focus {
   position: relative;
 }
 
-/* THE COMPONENETS */
+/* COMPONENETS */
 
-/* THE BODY COMPONENT - PLACEMENT */
+/* Basic styles. Responsive styles adding further down under media queries */
+
+/* THE BODY COMPONENT */
 
 body {
   display: flex;
@@ -79,50 +81,12 @@ body {
   background-color: black;
 }
 
-@media (max-width: 599px) {
-  body {
-    align-items: flex-start;
-  }
-}
-
 /* THE APP COMPONENT */
 
 .d-app {
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-@media (max-width: 599px) {
-  .d-app {
-    justify-content: start;
-    width: 100vw;
-    height: 100vh;
-    padding: 1rem;
-  }
-}
-
-@media (min-width: 600px) {
-  .d-app {
-    justify-content: start;
-    width: 100vw;
-    height: 100vh;
-    padding: 1rem;
-  }
-}
-
-@media (min-width: 900px) {
-  .d-app {
-    justify-content: center;
-  }
-}
-
-@media (min-width: 1200px) {
-  .d-app {
-    width: 80vw;
-    height: auto;
-    justify-content: center;
-  }
 }
 
 /* THE HUD COMPONENT */
@@ -277,6 +241,15 @@ body {
   }
 }
 
+/* RANDOM */
+
+.d-game-over {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 3rem;
+  text-align: center;
+}
+
 /* UTILITISE */
 
 .flipped {
@@ -289,20 +262,56 @@ body {
 
 /* For phone only */
 @media (max-width: 599px) {
+  body {
+    /* Utilise all screen space by placing element on top */
+    align-items: flex-start;
+  }
+  /* Let app take full width and height of the screen */
+  .d-app {
+    justify-content: start;
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+  }
 }
-/* For tablet portrait and up */
+/* For phone portrait only */
+@media (max-width: 599px) and (orientation: portrait) {
+}
+/* For phone landscape only */
+@media (max-width: 599px) and (orientation: landscape) {
+}
+/* For tablet and up */
 @media (min-width: 600px) {
+  /* Let app take full width and height of the screen */
+  .d-app {
+    justify-content: start;
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+  }
 }
-/* For tablet landscape and up */
+/* For tablet portrait only */
+@media (min-width: 600px) and (orientation: portrait) {
+}
+/* For tablet landscape only */
+@media (min-width: 600px) and (orientation: landscape) {
+}
+/* For tablet and up */
 @media (min-width: 900px) {
+  /* Screen size starts to become so big so placing items on top starts to look weird */
+  .d-app {
+    justify-content: center;
+  }
 }
 /* For desktop and up */
 @media (min-width: 1200px) {
+  /* Screen size so big using whole width and heigt looks like you suffer from visual impairment */
+  .d-app {
+    width: 80vw;
+    height: auto;
+    justify-content: center;
+  }
 }
 /* For big desktop and up */
 @media (min-width: 1800px) {
-}
-@media (min-width: 0px) and (max-width: 599px) and (orientation: landscape) {
-}
-@media (min-width: 0px) and (max-width: 599px) and (orientation: landscape) {
 }
