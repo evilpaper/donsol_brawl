@@ -75,7 +75,6 @@ button:focus {
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100vh;
   width: 100vw;
   background-color: black;
@@ -96,14 +95,6 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  width: 100%;
-  padding: 1%;
-}
-
-@media (max-width: 599px) {
-  .d-hud {
-    flex-wrap: wrap;
-  }
 }
 
 .d-stats {
@@ -135,7 +126,56 @@ body {
   font-weight: 900;
 }
 
+.d-pass {
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* THE BOARD COMPONENT */
+
+.d-board {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.d-card {
+  min-height: auto;
+  border-radius: 10px;
+}
+
+/* OTHER */
+
+.d-game-over {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 2.4rem;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* UTILITISE */
+
+.flipped {
+  opacity: 0.5;
+}
+
+/* MEDIA QUERIES */
+
+/* Phone only */
 @media (max-width: 599px) {
+  body {
+    align-items: flex-start;
+  }
+  .d-app {
+    justify-content: start;
+    width: 94vw;
+    height: 46vw;
+  }
   .d-stats--stat {
     margin-right: 0.2rem;
   }
@@ -147,66 +187,21 @@ body {
   .d-attack-break {
     font-size: 1.4rem;
   }
-}
-
-@media (min-width: 600px) {
-  .d-stats--stat {
-    margin-right: 0.6rem;
-  }
-  .d-stats p {
-    font-size: 0.8rem;
-  }
-  .d-vitality,
-  .d-attack,
-  .d-attack-break {
-    font-size: 2rem;
-  }
-}
-
-.d-pass {
-  background-color: black;
-  border: 2px solid black;
-  color: white;
-  font-weight: 700;
-  font-style: italic;
-}
-
-@media (max-width: 599px) {
   .d-pass {
     font-size: 0.6rem;
   }
 }
 
-@media (min-width: 600px) {
-  .d-pass {
-    font-size: 0.6rem;
-  }
-}
-
-@media (min-width: 900px) {
-  .d-pass {
-    font-size: 0.8rem;
-  }
-}
-
-/* THE BOARD COMPONENT */
-
-.d-board {
-  cursor: pointer;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-}
-
-.d-card {
-  min-height: auto;
-  border-radius: 10px;
-  align-self: center;
-}
-
+/* Phone portrait only*/
 @media (max-width: 599px) and (orientation: portrait) {
+  .d-hud {
+    padding: 0.6rem;
+    width: 100%;
+  }
   .d-board {
+    width: 100%;
+    height: 90%;
+    align-content: flex-start;
   }
   .d-card {
     width: 48%;
@@ -214,8 +209,16 @@ body {
   }
 }
 
+/* Phone landscape only */
 @media (max-width: 599px) and (orientation: landscape) {
+  .d-hud {
+    padding: 0.4rem;
+    width: 100%;
+  }
   .d-board {
+    width: 100%;
+    height: 90%;
+    align-content: flex-start;
   }
   .d-card {
     width: 24%;
@@ -223,95 +226,129 @@ body {
   }
 }
 
-@media (min-width: 600px) and (orientation: portrait) {
-  .d-board {
-  }
-  .d-card {
-    width: 40%;
-    margin: 1%;
-  }
-}
-
-@media (min-width: 600px) and (orientation: landscape) {
-  .d-board {
-  }
-  .d-card {
-    width: 24%;
-    margin: 0.4%;
-  }
-}
-
-/* RANDOM */
-
-.d-game-over {
-  font-weight: 700;
-  font-style: italic;
-  font-size: 3rem;
-  text-align: center;
-}
-
-/* UTILITISE */
-
-.flipped {
-  opacity: 0.5;
-}
-
-.d-game-over {
-  width: 100%;
-}
-
-/* For phone only */
-@media (max-width: 599px) {
-  body {
-    /* Utilise all screen space by placing element on top */
-    align-items: flex-start;
-  }
-  /* Let app take full width and height of the screen */
-  .d-app {
-    justify-content: start;
-    width: 100vw;
-    height: 100vh;
-    padding: 1rem;
-  }
-}
-/* For phone portrait only */
-@media (max-width: 599px) and (orientation: portrait) {
-}
-/* For phone landscape only */
-@media (max-width: 599px) and (orientation: landscape) {
-}
-/* For tablet and up */
+/* Tablet and up */
 @media (min-width: 600px) {
-  /* Let app take full width and height of the screen */
   .d-app {
-    justify-content: start;
-    width: 100vw;
-    height: 100vh;
-    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 46vw;
+  }
+  .d-stats--stat {
+    margin-right: 0.6rem;
+  }
+  .d-stats p {
+    font-size: 0.6rem;
+  }
+  .d-vitality,
+  .d-attack,
+  .d-attack-break {
+    font-size: 1.6rem;
+  }
+  .d-pass {
+    font-size: 0.6rem;
   }
 }
-/* For tablet portrait only */
+
+/* Tablet portrait only */
 @media (min-width: 600px) and (orientation: portrait) {
+  body {
+    align-items: center;
+  }
+  .d-hud {
+    padding: 0.6rem;
+    width: 100%;
+  }
+  .d-board {
+    width: 100%;
+    height: 100%;
+    align-content: flex-start;
+  }
+  .d-card {
+    width: 24%;
+    margin: 0.4%;
+  }
 }
-/* For tablet landscape only */
+
+/* Tablet landscape only */
 @media (min-width: 600px) and (orientation: landscape) {
+  body {
+    align-items: center;
+  }
+  .d-hud {
+    padding: 0.6rem;
+    width: 100%;
+  }
+  .d-board {
+    width: 100%;
+    height: 100%;
+    align-content: flex-start;
+  }
+  .d-card {
+    width: 24%;
+    margin: 0.4%;
+  }
 }
-/* For tablet and up */
+
+/* Tablet and up */
 @media (min-width: 900px) {
   /* Screen size starts to become so big so placing items on top starts to look weird */
+  body {
+    align-items: center;
+  }
   .d-app {
     justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 40vw;
+  }
+  .d-hud {
+    width: 100%;
+  }
+  .d-board {
+    width: 100%;
+    height: 100%;
+  }
+  .d-card {
+    width: 24%;
+    margin: 0.4%;
   }
 }
-/* For desktop and up */
+
+/* Desktop and up */
 @media (min-width: 1200px) {
-  /* Screen size so big using whole width and heigt looks like you suffer from visual impairment */
+  body {
+    align-items: center;
+  }
   .d-app {
     width: 80vw;
-    height: auto;
+    height: 38vw;
     justify-content: center;
   }
+  .d-hud {
+    width: 100%;
+  }
+  .d-board {
+    width: 100%;
+    height: 100%;
+  }
 }
-/* For big desktop and up */
+
+/* Big desktop and up */
 @media (min-width: 1800px) {
+  body {
+    align-items: center;
+  }
+  .d-app {
+    width: 70vw;
+    height: 34vw;
+    justify-content: center;
+  }
+  .d-hud {
+    width: 100%;
+  }
+  .d-board {
+    width: 100%;
+    height: 100%;
+  }
 }
