@@ -67,6 +67,12 @@ const getNextCard = deck => {
   return deck.shift();
 };
 
+const setBoardHeight = () => {
+  const card = board.querySelector("img");
+  const cardHeight = card.style.height;
+  board.style.height = "320px";
+};
+
 const getNumberOfCardsToDeal = () => {
   const cards = Array.from(board.querySelectorAll("img"));
   return 4 - cards.length;
@@ -81,23 +87,27 @@ const dealCards = _ => {
 
   for (let count = 0; count <= numberOfCards - 1; count++) {
     const card = getNextCard(deck);
-    const cardElement = document.createElement("img");
-    cardElement.classList.add("d-card");
-    cardElement.src = `${card.img}`;
-
-    cardElement.setAttribute("suite", card.suite);
-    cardElement.setAttribute("value", card.value);
-
-    board.appendChild(cardElement);
+    const cardElement = `
+      <div class="d-card-container"
+        suite="${card.suite}"
+        value="${card.value}"
+      >
+       <img 
+          class="d-card" 
+          suite="${card.suite}"
+          value="${card.value}"
+          src="${card.img}"
+        >
+      </div>
+        `;
+    board.insertAdjacentHTML("beforeend", cardElement);
   }
-  console.log(`Cards in deck ${deck.length}`);
-  console.log(`cards in discard ${game.discard.length}`);
 };
 
 const clearBoard = _ => {
-  const cards = Array.from(board.querySelectorAll("img"));
+  const cards = Array.from(board.querySelectorAll(".d-card-container"));
   cards.forEach(card => {
-    var elem = board.querySelector("img");
+    var elem = board.querySelector(".d-card-container");
     elem.parentNode.removeChild(elem);
   });
 };
@@ -188,6 +198,10 @@ const updateCardVisualState = card => {
 
 board.addEventListener("click", event => {
   const card = event.target;
+  console.log(card);
+  if (card.classList.contains("flipped")) {
+    return;
+  }
   const suite = card.getAttribute("suite");
   const value = parseInt(card.getAttribute("value"));
 
@@ -229,4 +243,5 @@ function init() {
 init();
 shuffle(deck);
 dealCards();
+setBoardHeight();
 renderGameStats(game);
