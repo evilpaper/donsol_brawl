@@ -1,13 +1,10 @@
 /*
 
 TODO
-- Add restart - hundredrabbits donsol do this by switching "run" to "restart"
-- Make it obvious when you can run and not by highligting the button
-- Update card graphical style so it's consistent
-- Minify card images
+- Add restart
+- Make it obvious when you can run by highligting the button
 - Make the "board" size static so it does not collapse during win or lose (eg. when there are no cards)
 - Make sure "deck" shows right value, especially when cards should be put back
-- Refactor css so each part use medai queries and looks nice on screens in dev tools
 - Add animations to
   - Cards fade in, cards fade out
   - Stats update 
@@ -18,11 +15,6 @@ TODO
 - Add sound
   - Background music like Donsol from hundredrabbits
   - Flip card effects like Crad Crawl
-- Refactor code so it's easy to read and change
-  - consider the advices from Zell Liew
-  - check different patterns and similra games like Donsol
-  - consider splitting up state and view
-  - Write some tests, for practice
 */
 
 class Game {
@@ -34,7 +26,21 @@ class Game {
     this.strengthOfLastOpponent = 0;
     this.round = 0;
     this.turn = 0;
+    this.stage = [];
     this.discard = [];
+    this.deck = new Deck();
+  }
+  init() {
+    this.vitality = 21;
+    this.maximumVitality = 21;
+    this.attack = 0;
+    this.attackHistory = [];
+    this.strengthOfLastOpponent = 0;
+    this.round = 0;
+    this.turn = 0;
+    this.stage = [];
+    this.discard = [];
+    this.deck = new Deck();
   }
 }
 
@@ -107,8 +113,7 @@ const dealCards = _ => {
 const clearBoard = _ => {
   const cards = Array.from(board.querySelectorAll(".d-card-container"));
   cards.forEach(card => {
-    var elem = board.querySelector(".d-card-container");
-    elem.parentNode.removeChild(elem);
+    card.parentNode.removeChild(card);
   });
 };
 
@@ -202,6 +207,10 @@ board.addEventListener("click", event => {
   if (card.classList.contains("flipped")) {
     return;
   }
+  if (card.classList.contains("d-game-over")) {
+    location.reload();
+    return;
+  }
   const suite = card.getAttribute("suite");
   const value = parseInt(card.getAttribute("value"));
 
@@ -236,11 +245,7 @@ board.addEventListener("click", event => {
   }
 });
 
-function init() {
-  return (game = new Game());
-}
-
-init();
+const game = new Game();
 shuffle(deck);
 dealCards();
 setBoardHeight();

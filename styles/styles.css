@@ -141,6 +141,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: center;
 }
 
 .d-card {
@@ -170,7 +171,7 @@ body {
 /* Phone only */
 @media (max-width: 599px) {
   .d-app {
-    width: 94%;
+    width: 86%;
   }
   .d-stats--stat {
     margin-right: 0.2rem;
@@ -191,14 +192,14 @@ body {
 /* Phone portrait only*/
 @media (max-width: 599px) and (orientation: portrait) {
   .d-hud {
-    padding: 0.6rem;
+    padding: 0.4rem;
   }
   .d-board {
     align-content: flex-start;
   }
   .d-card-container {
     width: 48%;
-    margin: 1%;
+    margin: 0.6%;
   }
 }
 
