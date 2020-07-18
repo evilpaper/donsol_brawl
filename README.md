@@ -2,7 +2,7 @@
 
 # Mega Super Hero Card Brawl
 
-A donsol style card game with characters from Capcom's Fighting franschises. Responsive web, play on any device you like.
+A donsol style card game with characters from Capcom's Fighting franchises. Responsive web, play on any device you like.
 
 Made for fun! [Check out progress here](https://evilpaper.com/superherocardbrawl/)
 
