@@ -6,7 +6,7 @@ A donsol style card game with characters from Capcom's Fighting franschises. Res
 
 Made for fun! [Check out progress here](https://evilpaper.com/superherocardbrawl/)
 
-Donsol is originally created by John Eternal. [Read the story here](https://boingboing.net/2015/04/16/the-clone-that-wasnt.html)
+Donsol is originally created by John Eternal. At least it seems. [Read the story here](https://boingboing.net/2015/04/16/the-clone-that-wasnt.html).
 
 ## Built with
 HTML, CSS and vanilla JS.
